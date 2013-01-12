@@ -157,7 +157,8 @@ for f in $FILES; do
 	[ ! -d $PKGPATH ] && echo "Error unpacking $f" && exit 1
 	
 	cd $PKGPATH
-	
+	find $PKGPATH -exec touch {} \;
+		
 	echo ""
 	echo "Processing $f ..."
 	echo ""
