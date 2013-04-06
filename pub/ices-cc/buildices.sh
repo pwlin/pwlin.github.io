@@ -6,7 +6,7 @@
 
 # URL from which source packages should be obtained
 ################DOWNLOADURL="http://www.centova.com/clientdist/ices/src/"
-DOWNLOADURL="http://pwlin.github.com/pub/ices-cc/src/"
+DOWNLOADURL="http://pwlin.github.io/pub/ices-cc/src/"
 # source packages to download
 FILES="libxml2.tar.gz libogg.tar.gz libvorbis.tar.gz libshout.tar.gz ices.tar.gz"
 # path into which to unpack package sources
@@ -17,7 +17,7 @@ INSTPREFIX="/usr/local/ices/"
 LAMEFILENAME=lame-3.97.tar.gz
 # LAME download URL
 #################LAMEURL=http://downloads.sourceforge.net/sourceforge/lame/$LAMEFILENAME
-LAMEURL=http://pwlin.github.com/pub/ices-cc/src/$LAMEFILENAME
+LAMEURL=http://pwlin.github.io/pub/ices-cc/src/$LAMEFILENAME
 # enable/disable LAME support
 BUILDLAME=1
 # enable/disable FAAD support (transcoding .aac audio files for broadcast in MP3 format)
