@@ -1,7 +1,7 @@
 <?php 
 
 function init($libraries=array()){
-    $root_folder = '/cygdrive/y';
+    $root_folder = '/cygdrive/z';
     foreach (glob($root_folder . '/*') as $foldername) {
         echo "$foldername\n";
         foreach (glob($foldername . '/*') as $filename) {

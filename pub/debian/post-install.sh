@@ -1,6 +1,6 @@
 # commented out !/bin/bash
 
-# wget http://pwlin.github.com/pub/debian/post-install.sh -O post-install.sh && bash post-install.sh && rm post-install.sh
+# wget http://pwlin.github.io/pub/debian/post-install.sh -O post-install.sh && bash post-install.sh && rm post-install.sh
 
 rm -r /var/lib/apt/lists/* 
 rm /etc/apt/apt.conf.d/00InstallRecommends 
@@ -43,7 +43,7 @@ cp -r Greybird/Greybird-master/* /usr/share/themes/Greybird/ > /dev/null
 # https://code.google.com/p/faenza-icon-theme/
 # http://ppa.launchpad.net/tiheum/equinox/ubuntu/pool/main/f/faenza-icon-theme/faenza-icon-theme_1.3.1.tar.gz
 # https://faenza-icon-theme.googlecode.com/files/faenza-icon-theme_1.3.zip
-curl http://pwlin.github.com/pub/debian/files/themes/faenza-icon-theme_1.3.zip > faenza.zip
+curl http://pwlin.github.io/pub/debian/files/themes/faenza-icon-theme_1.3.zip > faenza.zip
 unzip faenza.zip -d faenza > /dev/null
 bash ./faenza/INSTALL
 
@@ -55,7 +55,7 @@ bash ./faenza/INSTALL
 
 # http://gnome-look.org/content/show.php/Faenza-Cupertino?content=129008
 # http://gnome-look.org/CONTENT/content-files/129008-Faenza-Cupertino.tar.gz
-curl http://pwlin.github.com/pub/debian/files/themes/129008-Faenza-Cupertino.tar.gz > faenza-cupertino.tar.gz
+curl http://pwlin.github.io/pub/debian/files/themes/129008-Faenza-Cupertino.tar.gz > faenza-cupertino.tar.gz
 tar xvzf faenza-cupertino.tar.gz > /dev/null
 rm -rf /usr/share/icons/Faenza-Cupertino 
 mkdir -p /usr/share/icons/Faenza-Cupertino 
@@ -79,7 +79,7 @@ su -s /bin/bash user1 -c 'curl https://raw.github.com/pwlin/chromium-dev-updater
 
 # http://eclipse.mirror.triple-it.nl/eclipse/downloads/drops/R-3.7.2-201202080800/eclipse-SDK-3.7.2-linux-gtk.tar.gz
 
-su -s /bin/bash user1 -c 'curl http://pwlin.github.com/pub/debian/files/backup/backup-home.tar.gz;tar xzf backup-home.tar.gz;cp -rf /home/user1/backup-home/* /home/user1;rm -rf /home/user1/backup-home;rm backup-home.tar.gz'
+su -s /bin/bash user1 -c 'curl http://pwlin.github.io/pub/debian/files/backup/backup-home.tar.gz;tar xzf backup-home.tar.gz;cp -rf /home/user1/backup-home/* /home/user1;rm -rf /home/user1/backup-home;rm backup-home.tar.gz'
 
 mv /root/.bashrc.org /root/.bashrc 
 

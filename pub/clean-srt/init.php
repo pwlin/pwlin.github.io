@@ -1,7 +1,7 @@
 <?php
 
 function init($libraries=array()){
-	$root_folder = '/cygdrive/y';
+	$root_folder = '/cygdrive/z';
 	$files = array();
 	scan_folders($root_folder, $files);
 	foreach ($files as $dir => $srt) {
@@ -9,6 +9,8 @@ function init($libraries=array()){
 		$content = file_get_contents($srt);
 		$content = strip_tags($content);
 		$content = preg_replace('/Created and Encoded by(.*)/', '-', $content);
+		$content = preg_replace('/Subtitles re-synced by(.*)/', '-', $content);
+		$content = preg_replace('/Best watched using(.*)/', '-', $content);
 		$content = preg_replace('/>>(.*)/', '-', $content);
 		file_put_contents($srt . '', $content);
 		//file_put_contents($srt . '.1', $content);
