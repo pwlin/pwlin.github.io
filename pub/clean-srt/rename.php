@@ -7,7 +7,7 @@ function init($libraries=array()){
         foreach (glob($foldername . '/*') as $filename) {
             if (is_dir($filename)) {
                 deltree($filename);
-            } elseif (preg_match('/\.jpg$|\.txt$/i', $filename)) {
+            } elseif (preg_match('/\.jpg$|\.txt$|\.nfo$/i', $filename)) {
                 unlink($filename);
             } else {
                 $original_file_name = explode('/', $filename);
@@ -16,13 +16,12 @@ function init($libraries=array()){
                 $path_info = pathinfo($original_file_name);
                 $extension = $path_info['extension'];
                 
-                
                 $original_folder_name = explode('/', $foldername);
                 $original_folder_name = end($original_folder_name);
                 
                 $new_file_name = str_replace($original_file_name, $original_folder_name . '.' . $extension, $filename);
                 
-                //echo ("renaming $filename to $new_file_name\n");
+				echo ("renaming $filename to $new_file_name\n");
                 rename($filename, $new_file_name);
                 
             }
