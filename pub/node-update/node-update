@@ -1,0 +1,34 @@
+#!/bin/sh
+
+cd /root/src
+
+rm -rf /root/src/node-*
+rm /usr/local/bin/node
+rm /usr/local/bin/npm
+rm -rf /usr/local/lib/node_modules
+rm /usr/local/lib/dtrace/node.d
+rm /usr/local/share/man/man1/node.1
+
+wget -N http://nodejs.org/dist/node-latest.tar.gz
+
+tar xzvf node-latest.tar.gz && cd node-v*
+
+./configure
+
+make
+
+make install
+
+# https://github.com/visionmedia/express
+npm install -g express
+
+# https://github.com/remy/nodemon
+npm install -g nodemon
+
+# https://github.com/developmentseed/node-sqlite3
+npm install -g sqlite3
+
+# https://github.com/felixge/node-mysql
+npm install -g felixge/node-mysql
+
+
