@@ -6,6 +6,7 @@ rm -rf /root/src/node-*
 rm /usr/local/bin/node
 rm /usr/local/bin/npm
 rm /usr/local/bin/express
+rm /usr/local/bin/forever
 rm /usr/local/bin/nodemon
 rm -rf /usr/local/lib/node_modules
 rm /usr/local/lib/dtrace/node.d
@@ -35,3 +36,7 @@ npm install -g sqlite3
 # https://github.com/felixge/node-mysql
 npm install -g felixge/node-mysql
 
+# https://github.com/nodejitsu/forever
+npm install -g forever
+# forever -w start app.js
+# forever list
