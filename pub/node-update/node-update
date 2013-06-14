@@ -1,5 +1,10 @@
 #!/bin/sh
 
+cd /root
+
+rm -rf /root/src
+mkdir -p /root/src
+
 cd /root/src
 
 rm -rf /root/src/node-*
@@ -40,3 +45,4 @@ npm install -g felixge/node-mysql
 npm install -g forever
 # forever -w start app.js
 # forever list
+
