@@ -4,6 +4,9 @@ function init($libraries=array()){
     $root_folder = '/cygdrive/z';
     foreach (glob($root_folder . '/*') as $foldername) {
         echo "$foldername\n";
+		if ($foldername == 'done-dir') {
+			continue;
+		}
         foreach (glob($foldername . '/*') as $filename) {
             if (is_dir($filename)) {
                 deltree($filename);
