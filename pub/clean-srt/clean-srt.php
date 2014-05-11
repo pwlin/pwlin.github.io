@@ -8,11 +8,11 @@ function init($libraries=array()){
 		echo "Modifying $srt\n";
 		$content = file_get_contents($srt);
 		$content = strip_tags($content);
-		$content = preg_replace('/Created and Encoded by(.*)/', '-', $content);
+		/*$content = preg_replace('/Created and Encoded by(.*)/', '-', $content);
 		$content = preg_replace('/Subtitles re-synced by(.*)/', '-', $content);
 		$content = preg_replace('/Subtitles downloaded from(.*)/', '-', $content);
 		$content = preg_replace('/Best watched using(.*)/', '-', $content);
-		$content = preg_replace('/>>(.*)/', '-', $content);
+		$content = preg_replace('/>>(.*)/', '-', $content);*/
 		file_put_contents($srt . '', $content);
 		//file_put_contents($srt . '.1', $content);
 		//unlink ($srt . '.1');

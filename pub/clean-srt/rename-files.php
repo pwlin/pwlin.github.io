@@ -2,8 +2,8 @@
 
 function init($libraries=array()){
     $root_folder = '/cygdrive/z';
-    foreach (glob($root_folder . '/*') as $foldername) {
-        echo "$foldername\n";
+	foreach (glob($root_folder . '/*') as $foldername) {
+		echo "$foldername\n";
 		if ($foldername == $root_folder . '/done-dir') {
 			continue;
 		} 
