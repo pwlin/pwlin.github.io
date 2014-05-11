@@ -89,5 +89,5 @@ d-i finish-install/reboot_in_progress note
 d-i debian-installer/exit/poweroff boolean true
 
 
-# d-i preseed/late_command string chroot /target sh -c "wget --no-check-certificate https://raw.github.com/pwlin/pub/master/debian/post-install.sh -O /root/post-install.sh && mv /root/.bashrc /root/.bashrc.org && cat /root/.bashrc.org /root/post-install.sh > /root/.bashrc && rm /root/post-install.sh"
+# d-i preseed/late_command string chroot /target sh -c "wget --no-check-certificate https://pwlin.github.io/pub/debian/post-install.sh -O /root/post-install.sh && mv /root/.bashrc /root/.bashrc.org && cat /root/.bashrc.org /root/post-install.sh > /root/.bashrc && rm /root/post-install.sh"
 
