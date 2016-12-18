@@ -1,12 +1,14 @@
 # http://hands.com/d-i/
 # http://d-i.alioth.debian.org/manual/en.i386/apbs04.html
 # http://d-i.alioth.debian.org/manual/example-preseed.txt
+# http://d-i.alioth.debian.org/manual/en.i386/apbs03.html
 # http://www.debian.org/releases/stable/i386/apbs02.html.en
 # http://askubuntu.com/questions/54809/how-can-i-remove-packages-using-preseed
 # http://www.debian-administration.org/articles/394
 # http://www.50ply.com/blog/2012/07/16/automating-debian-installs-with-preseed-and-puppet/
 
-# auto=true preseed/url=http://192.168.0.4/deb/testing-i386.preseed
+# auto=true preseed/url=http://192.168.1.4/testing-i386.preseed
+
 
 ### Localization
 d-i	debian-installer/locale	select	en_US.UTF-8
@@ -18,6 +20,11 @@ d-i	localechooser/supported-locales	multiselect
 # keymap is an alias for keyboard-configuration/xkb-keymap
 d-i	keyboard-configuration/xkb-keymap	select	us
 keyboard-configuration	keyboard-configuration/xkb-keymap	select	us
+
+# Computer name.
+d-i netcfg/hostname string virdeb3
+d-i netcfg/get_hostname string virdeb3
+
 
 d-i	anna/choose_modules	multiselect
 
@@ -63,21 +70,47 @@ d-i time/zone string Europe/Amsterdam
 clock-setup	clock-setup/ntp	boolean	true
 clock-setup	clock-setup/ntp-server	string	0.debian.pool.ntp.org
 
+
+# Partitioning
+# If the system has only
+# one disk the installer will default to using that, but otherwise the device
+# name must be given in traditional, non-devfs format (so e.g. /dev/hda or
+# /dev/sda, and not e.g. /dev/discs/disc0/disc).
+# For example, to use the first SCSI/SATA hard disk:
+d-i partman-auto/disk string /dev/sda
+# In addition, you'll need to specify the method to use.
+# The presently available methods are:
+# - regular: use the usual partition types for your architecture
+# - lvm:     use LVM to partition the disk
+# - crypto:  use LVM within an encrypted partition
+d-i partman-auto/method string regular
+# You can choose one of the three predefined partitioning recipes:
+# - atomic: all files in one partition
+# - home:   separate /home partition
+# - multi:  separate /home, /var, and /tmp partitions
+d-i partman-auto/choose_recipe select atomic
+# This makes partman automatically partition without confirmation, provided
+# that you told it what to do using one of the methods above.
+d-i partman-partitioning/confirm_write_new_label boolean true
+d-i partman/choose_partition select finish
+d-i partman/confirm boolean true
+d-i partman/confirm_nooverwrite boolean true
+
+
 d-i	man-db/install-setuid	boolean	false
 
 tasksel	tasksel/first	multiselect	
 tasksel	tasksel/desktop	multiselect
 tasksel	tasksel/tasks	multiselect
 
-discover	discover/install_hw_packages	multiselect	virtualbox-ose-guest-x11
-
-d-i pkgsel/include string openssh-server ca-certificates
-# d-i pkgsel/include string openssh-server build-essential ca-certificates sudo xorg xfce4 xdg-utils desktop-base dmz-cursor-theme xfce4-cpugraph-plugin xfce4-terminal thunar-archive-plugin tar bzip2 zip unzip unrar-free ristretto scite xarchiver fonts-droid curl gtk2-engines-murrine htop mc localepurge subversion git php5-cli php5-curl cifs-utils
+d-i pkgsel/include string linux-headers-686-pae virtualbox-guest-x11 virtualbox-guest-dkms xorg tightvncserver openssh-server ca-certificates aptitude curl htop mc bash-completion php-cli php-curl fonts-droid-fallback default-jre build-essential sudo tar bzip2 zip unzip unrar-free subversion git locate cifs-utils lsof
 
 popularity-contest popularity-contest/participate boolean false
 
-grub-installer	grub-installer/only_debian	boolean	true
-#grub-installer	grub-installer/with_other_os	boolean	true
+d-i grub-installer grub-installer/only_debian boolean true
+#grub-installer	grub-installer/with_other_os boolean true
+d-i grub-installer/bootdev string /dev/sda
+
 
 # Avoid that last message about the install being complete.
 d-i finish-install/reboot_in_progress note
@@ -89,5 +122,5 @@ d-i finish-install/reboot_in_progress note
 d-i debian-installer/exit/poweroff boolean true
 
 
-# d-i preseed/late_command string chroot /target sh -c "wget --no-check-certificate https://pwlin.github.io/pub/debian/post-install.sh -O /root/post-install.sh && mv /root/.bashrc /root/.bashrc.org && cat /root/.bashrc.org /root/post-install.sh > /root/.bashrc && rm /root/post-install.sh"
+d-i preseed/late_command string chroot /target sh -c "wget http://192.168.1.4/post-install.sh -O /root/post-install.sh && mv /root/.bashrc /root/.bashrc.org && cat /root/.bashrc.org /root/post-install.sh > /root/.bashrc && rm /root/post-install.sh"
 
