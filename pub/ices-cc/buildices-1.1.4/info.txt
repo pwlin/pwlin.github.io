@@ -1,0 +1,13 @@
+downloaded from http://www.centova.com/pages/icescc
+
+will copy to /usr/local/src/ices
+will be installed in /usr/local/ices/
+
+buildices.sh 1.1.4 (08/25/2018)
+
+ices-cc-0.4.3
+lame-3.97
+libogg-1.3.1
+libshout-2.3.1
+libvorbis-1.3.3
+libxml2-2.8.0

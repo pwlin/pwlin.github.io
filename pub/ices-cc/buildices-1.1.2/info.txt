@@ -1,0 +1,16 @@
+downloaded from http://www.centova.com/pages/icescc
+patched libvorbis to remove examples, otherwise doesn't compile
+patched buildices.sh to touch all the extracted files
+
+will copy to /usr/local/src/ices
+will be installed in /usr/local/ices/
+
+buildices.sh 1.1.2 (08/17/2012)
+
+ices-cc-0.4.2
+lame-3.97
+libogg-1.1.3
+libshout-2.2.2
+libvorbis-1.1.2
+libxml2-2.8.0
+

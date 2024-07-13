@@ -1,0 +1,104 @@
+ices-cc Build Script
+===============================================================================
+
+Introduction
+------------
+This shell script automates the process of downloading, building, and
+installing ices-cc and all of its prerequisites.  If the build is successful,
+it will generate a ready-to-use ices-cc featuring XML configuration support,
+Vorbis support, and (optionally) LAME support for MP3 streaming.
+
+More information about ices-cc is available at:
+https://centova.com/en/icescc/
+
+More information about ices (on which ices-cc is based) is available at:
+http://www.icecast.org/ices.php
+
+
+Prerequisites
+-------------
+Before running buildices.sh, you'll need to make sure that you have the
+following software installed:
+
+ - GNU C compiler (gcc)
+ - GNU C++ compiler (g++)
+ - GNU make (make)
+ - GNU tar (tar)
+- pkgconfig (pkg-config) 
+- CURL or wget (curl/wget)
+
+On Red Hat-based distributions, you can usually install these using:
+
+ yum install gcc gcc-c++ make tar wget pkgconfig
+
+On Debian-based distributions, you can install these using:
+
+ apt-get install build-essential tar wget pkg-config
+
+
+Installing ices-cc
+------------------
+To build ices-cc with the default options, run:
+
+ su - root
+ chmod +x ./buildices.sh
+ ./buildices.sh --proceed
+
+This will download all of the necessary source code, then build and install
+ices under /usr/local/ices/.
+
+If you want to include MP3 streaming support, use:
+
+ su - root
+ chmod +x ./buildices.sh
+ ./buildices.sh --buildlame=1 --proceed
+
+There are a number of commandline options available; you can obtain a list by
+running ./buildices.sh with no parameters.
+
+
+Advanced
+--------
+This script downloads the source packages for libxml2, libogg, libvorbis, 
+libshout, and ices itself from the Centova Technologies web site, and
+(optionally) the liblame source code from SourceForge.
+
+Upon successfully downloading all packages, it unpacks them, then configures,
+builds, and installs them under /usr/local/ices/.  This path can be overriden
+via arguments to buildices.sh.
+
+Note that because we use this script to install ices in what some might refer
+to as "hostile" customer server environments (in which the existing shared
+libraries are often broken, outdated, or otherwise unreliable), the script
+makes no attempt to use any pre-existing shared libraries on the system.  All
+of the above source packages are installed under /usr/local/ices/ and used by
+ices regardless of whether pre-existing libxml, libogg, libvorbis, or liblame
+libraries exist on the server.
+
+
+Uninstallation
+--------------
+The buildices.sh script installs everything (including applications and
+libraries) under the directory specified during installation.  If no directory
+was specified, a default of /usr/local/ices/ is used.
+
+To uninstall ices-cc after running buildices.sh, simply delete the directory
+into which ices-cc was installed, for example:
+
+ rm -rf /usr/local/ices/
+
+This will completely remove ices-cc from your system.
+
+
+Support
+-------
+This script comes without support or warranty of any kind.  We hope that you
+will find it useful, but we are unable to offer any assistance if it does not
+work on your particular server or environment.
+
+For assistance in building ices from source, please consult the ices mailing
+list.
+
+===============================================================================
+Copyright 2007-2018, Centova Technologies Inc.              https://centova.com
+
