@@ -6,19 +6,17 @@
 
 # URL from which source packages should be obtained
 ##DOWNLOADURL="https://centova.com/files/ices/src/"
-DOWNLOADURL="http://pwlin.github.io/pub/ices-cc/buildices-1.1.4/src/"
+DOWNLOADURL="https://pwlin.github.io/pub/ices-cc/buildices-1.1.4/src/"
 # source packages to download
 FILES="libxml2.tar.gz libogg.tar.gz libvorbis.tar.gz libshout.tar.gz ices.tar.gz"
 # path into which to unpack package sources
-##SRCPATH="/usr/local/src/ices/"
-SRCPATH="/home/cyrus/apps/ices/src"
+SRCPATH="/usr/local/src/ices/"
 # installation path prefix for ices and libraries
-##INSTPREFIX="/usr/local/ices/"
-INSTPREFIX="/home/cyrus/apps/ices/bin"
+INSTPREFIX="/usr/local/ices/"
 # LAME tarball filename
 LAMEFILENAME=lame-3.97.tar.gz
 # LAME download URL
-LAMEURL=http://pwlin.github.io/pub/ices-cc/buildices-1.1.4/src/$LAMEFILENAME
+LAMEURL=$DOWNLOADURL$LAMEFILENAME
 # enable/disable LAME support
 BUILDLAME=1
 # enable/disable FAAD support (transcoding .aac audio files for broadcast in MP3 format)
