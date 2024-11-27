@@ -10,9 +10,11 @@ DOWNLOADURL="https://pwlin.github.io/pub/ices-cc/buildices-1.1.4/src/"
 # source packages to download
 FILES="libxml2.tar.gz libogg.tar.gz libvorbis.tar.gz libshout.tar.gz ices.tar.gz"
 # path into which to unpack package sources
-SRCPATH="/usr/local/src/ices/"
+#SRCPATH="/usr/local/src/ices/"
+SRCPATH="/home/$USER/apps/ices/src/"
 # installation path prefix for ices and libraries
-INSTPREFIX="/usr/local/ices/"
+#INSTPREFIX="/usr/local/ices/"
+INSTPREFIX="/home/$USER/apps/ices/inst/"
 # LAME tarball filename
 LAMEFILENAME=lame-3.97.tar.gz
 # LAME download URL
