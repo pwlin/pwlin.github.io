@@ -39,14 +39,14 @@ for arg in "$@"; do
     --no-rmmod)
       no_rmmod=true
       ;;
-    --set-rmmod=*)
+    --set-rmmod)
       proceed_rmmod=true
       ;;
     --add-extra-apt-repos)
       add_extra_apt_repos=true
       ;;
     --no-extra-apt-repos)
-      no_extra_apt_repos=true
+      no_extra_apt_repos=false
       ;;
     --proceed)
       proceed=true
