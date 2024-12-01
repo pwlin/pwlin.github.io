@@ -45,8 +45,8 @@ for arg in "$@"; do
     --add-extra-apt-repos)
       add_extra_apt_repos=true
       ;;
-    --no-extra-apt-repos)
-      no_extra_apt_repos=true
+    --no-extra-apt-repos1)
+      no_extra_apt_repos1=true
       ;;
     --proceed)
       proceed=true
@@ -137,7 +137,7 @@ configure_ssh() {
   # Check if sshd is installed
   if ! command -v sshd &> /dev/null; then
     echo "sshd is not installed. Installing OpenSSH server..."
-    apt update && sudo install -y openssh-server
+    apt update && install -y openssh-server
   fi
 
   mkdir -p /etc/ssh/sshd_config.d
@@ -214,10 +214,10 @@ remove_kernel_modules() {
 
 # Task 6: Add extra APT repositories
 add_extra_apt_repos() {
-  #if $no_extra_apt_repos; then
-  #  echo "Skipping extra APT repositories as --no-extra-apt-repos is set."
-  #  return
-  #fi
+  if $no_extra_apt_repos1; then
+    echo "Skipping extra APT repositories as --no-extra-apt-repos1 is set."
+    return
+  fi
 
   if [[ $add_extra_apt_repos == true ]]; then
     add_php_sury_org
