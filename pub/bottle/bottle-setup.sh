@@ -46,7 +46,7 @@ for arg in "$@"; do
       add_extra_apt_repos=true
       ;;
     --no-extra-apt-repos)
-      no_extra_apt_repos=false
+      no_extra_apt_repos=true
       ;;
     --proceed)
       proceed=true
@@ -208,10 +208,10 @@ remove_kernel_modules() {
 
 # Task 6: Add extra APT repositories
 add_extra_apt_repos() {
-  if $no_extra_apt_repos; then
-    echo "Skipping extra APT repositories as --no-extra-apt-repos is set."
-    return
-  fi
+  #if $no_extra_apt_repos; then
+  #  echo "Skipping extra APT repositories as --no-extra-apt-repos is set."
+  #  return
+  #fi
 
   if [[ $add_extra_apt_repos == true ]]; then
     add_php_sury_org
