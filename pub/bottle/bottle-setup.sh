@@ -123,8 +123,8 @@ change_ssh_port() {
     read -p "Do you want to change the SSH port? [Y/n]: " response
     response=${response:-Y}
     if [[ "$response" =~ ^[Yy]$ ]]; then
-      read -p "Enter new SSH port (default: 65500): " ssh_port_input
-      ssh_port=${ssh_port_input:-65500}
+      read -p "Enter new SSH port (default: 50055): " ssh_port_input
+      ssh_port=${ssh_port_input:-50055}
       configure_ssh "$ssh_port"
     fi
   fi
@@ -133,6 +133,12 @@ change_ssh_port() {
 configure_ssh() {
   local port="$1"
   local config_file="/etc/ssh/sshd_config.d/00Bottle.conf"
+
+  # Check if sshd is installed
+  if ! command -v sshd &> /dev/null; then
+    echo "sshd is not installed. Installing OpenSSH server..."
+    apt update && sudo install -y openssh-server
+  fi
 
   mkdir -p /etc/ssh/sshd_config.d
   cat <<EOL > "$config_file"
