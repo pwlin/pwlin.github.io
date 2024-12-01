@@ -113,6 +113,13 @@ change_ssh_port() {
     return; 
   fi
 
+  # Check if sshd is installed
+  if ! command -v sshd &> /dev/null; then
+    echo "sshd is not installed. Installing OpenSSH server..."
+    apt-get update
+    apt-get install -y openssh-server
+  fi
+
   local current_port=$(grep -iE "^\s*Port\s+" /etc/ssh/sshd_config | awk '{print $2}')
   current_port=${current_port:-22} # Default port is 22 if not explicitly set
 
@@ -137,7 +144,8 @@ configure_ssh() {
   # Check if sshd is installed
   if ! command -v sshd &> /dev/null; then
     echo "sshd is not installed. Installing OpenSSH server..."
-    apt update && install -y openssh-server
+    apt-get update
+    apt-get install -y openssh-server
   fi
 
   mkdir -p /etc/ssh/sshd_config.d
