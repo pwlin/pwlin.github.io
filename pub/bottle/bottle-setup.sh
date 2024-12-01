@@ -261,5 +261,6 @@ main() {
   remove_kernel_modules
   add_extra_apt_repos
   echo "Script execution completed."
+}
 
 main
