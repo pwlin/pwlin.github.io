@@ -169,7 +169,7 @@ install_software() {
 
   echo "Updating package list and installing essential software."
   apt-get update
-  apt-get install -y --no-install-recommends mc git htop aptitude lsb-release ca-certificates lsb
+  apt-get install -y --no-install-recommends mc git htop aptitude lsb-release ca-certificates curl 
 }
 
 # Task 5: Remove kernel modules
