@@ -311,7 +311,8 @@ add_bash_profile() {
 
 run_add_bash_profile() {
     echo "Adding bottle-bash.profile"
-    local file_url="http://192.168.76.101:3000/bottle-bash.profile"
+    #local file_url="http://192.168.76.101:3000/bottle-bash.profile"
+    local file_url="https://raw.githubusercontent.com/pwlin/pwlin.github.io/refs/heads/master/pub/bottle/bottle-bash.profile"
 
     if [ -f "$SCRIPT_DIR/bottle-bash.profile" ]; then
         cp "$SCRIPT_DIR/bottle-bash.profile" "$HOME/bottle-bash.profile"
