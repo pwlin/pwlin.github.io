@@ -173,7 +173,7 @@ install_software() {
 run_install_software() {
     echo "Updating package list and installing essential software."
     apt-get update
-    apt-get install -y --no-install-recommends openssh-server mc git htop aptitude lsb-release ca-certificates curl build-essential wget
+    apt-get install -y --no-install-recommends openssh-server mc git htop aptitude lsb-release ca-certificates curl build-essential wget bash-completion
 }
 
 # Change SSHD port
