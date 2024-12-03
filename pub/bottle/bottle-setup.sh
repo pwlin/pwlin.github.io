@@ -150,12 +150,6 @@ APT::Install-Recommends "false";
 Acquire::PDiffs "false";
 Aptitude::Get-Root-Command "sudo:/usr/bin/sudo";
 EOL
-
-    cat <<EOL >/etc/apt/preferences.d/php.pref
-Package: php*
-Pin: release o=packages.sury.org
-Pin-Priority: 9999
-EOL
 }
 
 # Install software
@@ -292,8 +286,13 @@ add_php_sury_org() {
     curl -sSLo /tmp/debsuryorg-archive-keyring.deb https://packages.sury.org/debsuryorg-archive-keyring.deb
     dpkg -i /tmp/debsuryorg-archive-keyring.deb
     sh -c "echo 'deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ $DDISTRO main' > /etc/apt/sources.list.d/php.list"
-    apt-get update
 
+        cat <<EOL >/etc/apt/preferences.d/php.pref
+Package: php*
+Pin: release o=packages.sury.org
+Pin-Priority: 9999
+EOL
+    apt-get update
     echo "sury.org repository added successfully."
 }
 
