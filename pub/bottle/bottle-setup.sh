@@ -150,6 +150,12 @@ APT::Install-Recommends "false";
 Acquire::PDiffs "false";
 Aptitude::Get-Root-Command "sudo:/usr/bin/sudo";
 EOL
+
+    cat <<EOL >/etc/apt/preferences.d/php.pref
+Package: php*
+Pin: release o=packages.sury.org
+Pin-Priority: 9999
+EOL
 }
 
 # Install software
