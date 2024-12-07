@@ -173,7 +173,7 @@ install_software() {
 run_install_software() {
     echo "Updating package list and installing essential software."
     apt-get update
-    apt-get install -y --no-install-recommends openssh-server mc git htop aptitude lsb-release ca-certificates curl build-essential wget bash-completion
+    apt-get install -y --no-install-recommends sudo net-tools openssh-server mc git htop aptitude lsb-release ca-certificates curl build-essential wget bash-completion 
 }
 
 # Change SSHD port
@@ -356,12 +356,12 @@ main() {
     fi
 
     echo "Starting script execution."
-    create_new_user
     add_apt_tweaks
     install_software
     change_sshd_port
     remove_kernel_modules
     add_extra_apt_repos
+    create_new_user
     add_bash_profile
     echo "Script execution completed."
 }
